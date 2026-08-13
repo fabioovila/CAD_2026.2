@@ -1,0 +1,7 @@
+Utilizando a biblioteca time.h em C para medir o tempo de execução dos acessos à matriz por linhas e por colunas, e entradas de potências de 2, encontrei que os resultados para entradas muito pequenas, até N = 256 (2^8), são muito próximos. 
+
+Entretanto, a partir da entrada N = 512 (2^9), o valor de tempo de acesso por colunas já ficou algumas vezes maior que o por linhas, mantendo essa disparidade nos testes com entradas maiores. Porém, ao inserir uma entrada de 16384 (2^14), meu código já não obteve retorno algum no terminal, e a partir da entrada 32738 (2^15), o programa passou a imprimir "Erro ao alocar memória".
+
+Considerando que a matriz N x N armazena dados em double, ela consome N² x 8 bytes de memória, o erro de alocação de memória ocorre provavelmente porque esse valor ((2^15)^2 x 8 bytes =~ 8GB) excede a memória heap disponível no ambiente de execução.
+
+Além disso, a divergência nos tempos de execução ocorre pelo padrão de armazenamento de C, que utiliza alocação por linhas, pelo princípio da localidade espacial. Logo, na varredura por colunas, o código fica "saltando" entre posições distantes da memória a cada passo, podendo ocasionar em erros de cache que tornam a execução significativamente mais lenta.

@@ -1,0 +1,15 @@
+gargalo de von neumann
+    troca entre memória e CPU?
+
+localidade temporal e espacial 
+    se um local de dados é referenciado, então ele tenderá a ser referenciado novamente em breve, assim como seus endereços próximos
+
+pipeline? software pipeline?
+
+dependencia de dados é sempre um problema no paralelismo
+
+investigar o que cada nivel de otimização de compilador faz (flagS -O[n] do gcc)
+
+loop unroling
+software pipeline
+vetorização
