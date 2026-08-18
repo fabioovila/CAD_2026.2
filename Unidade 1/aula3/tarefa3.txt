@@ -1,0 +1,18 @@
+ sistema operacional
+        camada de software entre o hardware e as aplicações
+        simplificar o acesso do software aos recursos do hardware
+
+PROCESSOS - Ligado ao processador - threads
+        varios programas ativos ao mesmo tempo -> fluxo de execução -> abstração de "processos"
+        SO gerencia a alternância entre processos 
+        -> *cada processo tem sua memória própria, troca de contexto entre processos é uma operação custosa*
+        melhor caso para o paralelismo entre processos é em sistemas distribuídos(conjunto de computadores e dispositivos independentes que trabalham juntos em uma rede)
+
+THREADS
+        fluxo lógico de execução independente dentro de um mesmo processo (dentro de um mesmo computador)
+        troca de contexto em thread é mais leve do que em sistemas distribuidos (?)
+        desafio de trabalhar com muitas threads tá relacinado ao uso da memória
+        CONDIÇÃO DE CORRIDA - resolvido com semáforo
+
+
+https://www.ibm.com/docs/pt-br/aix/7.3.0?topic=programming-understanding-threads-processes

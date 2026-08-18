@@ -1,0 +1,22 @@
+
+cont1.c
+
+    Esse código trata de fluxo de execução de processos. O processo pai apenas cria quatro filhos pelo fork(), e cada um deles executa seu proprio laço para incrementar um contador, sem afetar os outros processos. O processo pai espera o fim dos processos filhos por meio da funçao wait(). Cada filho utiliza uma variavel comum que nao e compartilhada, entao o codigo nunca chega a ter um problema com memoria.
+
+cont2.c
+
+    Esse código trata de threads num mesmo processo que compartilham a memoria do processo, incluindo a variavel global "contador". O programa deveria imprimir 4000000 como contador final, seguindo a logica do codigo. Porem, em todas as execuções teste que fiz, o valor sempre deu abaixo desse valor. Isso pode ser explicado pelo fato do codigo usar o operador "++", que envolve ler o valor, somar um e escrever o novo valor. Se duas threads lerem o mesmo valor antes que qualquer uma tenha gravado o valor, o incremento pode ser perdido, o que ocasiona uma condição de corrida, como demonstrado em:
+
+        pthread_t threads[NUM_THREADS];
+        printf("Contador inicial: %d\n", contador);
+
+        // Criar as threads
+        for (int i = 0; i < NUM_THREADS; i++) {
+            int erro = pthread_create(
+                &threads[i],
+                NULL,
+                incrementar,
+                NULL
+            );
+        
+    Uma solução seria o uso de semaforo binario para a variavel compartilhada entre as threads, tendo um semaforo bloqueando a thresh antes do ++, e outro apos o ++, liberando o acesso e permitindo acesso da proxima thread. Assim, cada thread incrementa o valor apenas uma por vez, e o contador final chegua em 4000000, como esperado.
