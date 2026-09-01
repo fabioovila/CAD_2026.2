@@ -1,0 +1,16 @@
+PROGRAMAÇÃO CONCORRENTE
+    Código paralelo X código sequencial
+    nao dá pra paralelizar todo o código
+    -> deve ser considerada execuções que podem ocorrer de forma concorrente, ao invés da programação "tradicional" em que programamos pensando em um único fluxo
+    -> qual parte do código dá para ser paralelizada? o que dá pra ser particionado? qual paradigma usar? a versão paralelizada vale a pena?
+    -> overhead: tempo de processamento e aos recursos de memória extras que o sistema gasta apenas para gerenciar as tarefas em paralelo
+    -> granularidade: refere-se ao tamanho ou à escala das tarefas em que um programa é dividido para serem executadas simultaneamente, bem como à frequência com que essas tarefas interagem ou se comunicam entre si. O grande desafio na concorrência é encontrar a granularidade ideal. Se for grossa demais, o programa não aproveita o hardware. Se for fina demais, o sistema perde desempenho gerenciando a própria concorrência (fenômeno conhecido como over-parallelism)
+    -> Concorrencia X Paralelismo:
+    -> Memoria compartilhada X memória distribuída
+    -> Avaliação de desempenho: fatores, métricas de desempenho (speedup, eficiência, desempenho e escalabilidade paralela)
+    -> Lei de Amdahl: parte sequencial / parte paralela do código -> observar impacto financeiro da economia baseado na paralelização, aumentar nº de processos
+    -> Lei de Gustafson: quando o aumento do problema aumenta mais a parte paralela do código, vale a pena paralelizar
+    -> Escalabilidade FOrte vs Fraca (gustafson)
+
+    por que é mais difícil programar em paralelo?
+        
