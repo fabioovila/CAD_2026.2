@@ -1,0 +1,34 @@
+/*introdução à programação paralela(PP) usando OpenMP
+    (duas operações são paralelas se realmente podem ser executadas ao mesmo tempo. (multicore))
+    programação com memória compartilhada com threads
+    OpenMP (open multiprocessing) é uma API para PP em memória compartilhada - C, C++ e Fortran
+        diretivas de compilação
+        bibliotecas com rotinas(funções)
+        variáveis de ambiente
+
+        site com a documentação www.openmp.org
+        fork e join -> começa fluxo sequencial, criação de região paralela pela thread mestre, quando termina tem o join e volta ao código sequencial. o mesmo código pode ter várias regiões paralelas, esse processo será feito toda vez
+       
+        pragmas, diretivas, clause(modifica diretivas)
+        compilar codigo com OpenMP -> gcc -fopenmp  meu_programa_omp.c programa
+
+        pra paralelizar um loop, o openmp tem a diretiva for*/
+#include <stdio.h>
+
+/* Declaração usada quando o IntelliSense não localiza omp.h. */
+extern int omp_get_thread_num(void);
+
+int main() {
+    #pragma omp parallel num_threads (4)
+    {
+        int tid = omp_get_thread_num () ;
+        printf(" Alo da thread %d. \n", tid);
+        #pragma omp for
+        for (int i = 0; i < 12; ++i)
+        {
+            printf(" Alo da thread %d, fazendo o trabalho %d\n", tid, i);
+        }
+    }
+
+        return 0;
+}

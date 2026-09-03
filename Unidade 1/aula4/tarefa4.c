@@ -32,24 +32,12 @@ double calcular_integral_trapezio(double a, double b, int n) {
 }
 
 int main() {
-    double a, b;
-    int n;
+    const double a = 0.0;
+    const double b = 1.0;
+    const int n = 10000;
 
     printf("--- Cálculo de Integral Definida (Fórmula Estrita da Imagem) ---\n");
-    
-    printf("Digite o limite inferior (a): ");
-    if (scanf("%lf", &a) != 1) return 1;
-    
-    printf("Digite o limite superior (b): ");
-    if (scanf("%lf", &b) != 1) return 1;
-    
-    printf("Digite o número de subdivisões (n): ");
-    if (scanf("%d", &n) != 1) return 1;
-
-    if (n <= 0) {
-        printf("O número de subdivisões deve ser maior que zero.\n");
-        return 1;
-    }
+    printf("Intervalo: [%.1f, %.1f] | Subdivisões: %d\n", a, b, n);
 
     double resultado = calcular_integral_trapezio(a, b, n);
 
@@ -59,6 +47,6 @@ int main() {
 }
 
 
-Para implementar o somatório do método do trapézio, é necessário implementar um loop que aumenta iteradamente o valor de uma variável. Como a variável soma_colchetes é compartilhada, pode ocorrer condição de corrida se as threads acessarem e modificarem essa variável simultaneamente. Além disso, na soma de todos os resultados das threads, deve haver uma garantia de que essa operação seja feita de forma segura, evitando que múltiplas threads tentem atualizar a mesma variável ao mesmo tempo. 
+/*Para implementar o somatório do método do trapézio, é necessário implementar um loop que aumenta iteradamente o valor de uma variável. Como a variável soma_colchetes é compartilhada, pode ocorrer condição de corrida se as threads acessarem e modificarem essa variável simultaneamente. Além disso, na soma de todos os resultados das threads, deve haver uma garantia de que essa operação seja feita de forma segura, evitando que múltiplas threads tentem atualizar a mesma variável ao mesmo tempo. 
 
-Tentar proteger essa variável compartilhada a cada iteração do loop geraria um custo de sincronização (overhead) altíssimo, tornando o programa paralelo mais lento que o sequencial. O método de redução é uma técnica que pode ser utilizada para resolver esse problema, onde cada thread calcula uma parte da soma em uma variável privada (aumentando a granularidade do trabalho) e, ao final, os resultados parciais são combinados de forma segura, evitando inconsistência e perda de desempenho quando o problema crescer.
+Tentar proteger essa variável compartilhada a cada iteração do loop geraria um custo de sincronização (overhead) altíssimo, tornando o programa paralelo mais lento que o sequencial. O método de redução é uma técnica que pode ser utilizada para resolver esse problema, onde cada thread calcula uma parte da soma em uma variável privada (aumentando a granularidade do trabalho) e, ao final, os resultados parciais são combinados de forma segura, evitando inconsistência e perda de desempenho quando o problema crescer.*/
