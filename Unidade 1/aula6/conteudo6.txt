@@ -1,0 +1,10 @@
+[cheguei 20 minutos atrasado]
+
+o problema da última aula não era pra dar certo mesmo
+    diretiva crítica (#pragma omp criticl(secao_n))
+        mais interessante pra regioes críticas / complexas
+    diretiva atomic (#pragma omp atomic [clausulas])
+        mais interessante para operacoes mais simples
+        acessar variavel de modo atomico, so read, write e captura
+    operação de redução
+        produz um unico valor de uma variavel (ex: pragma omp parallel for reduction (+: b))
