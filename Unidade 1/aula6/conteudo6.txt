@@ -1,4 +1,5 @@
 [cheguei 20 minutos atrasado]
+openmp - regiao crítica (preciso estudar isso)
 
 o problema da última aula não era pra dar certo mesmo
     diretiva crítica (#pragma omp criticl(secao_n))

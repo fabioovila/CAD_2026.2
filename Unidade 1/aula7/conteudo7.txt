@@ -1,0 +1,31 @@
+openmp - cláusulas 
+    #pragma omp [parallel, for, critical, atomic, etc] [clausula(modifica/acrescenta) ex: num_threads, reduction]
+
+comportamento variáveis
+    shared: a variável é acessada por todas as threads
+    private: cada thread possui sua própria cópia da variável em seu escopo
+    default: (shared - todas serao compartilhadas por padrao| none - obriga a definir o escopo de todas as variáveis)
+
+    firstprivate: private + inicializa com o valor que possui antes da região paralela
+    lastprivate: private + assume, ao final da execução, o valor correspondente à última iteração do loop
+
+usar omp_get_wtime();
+
+escalonamento (estratégia de divisão e distribuição de tarefas)
+    desbalancemanto de carga: quando cria regiao paralela, as threads ficam "presas" até todas terminarem e saírem juntas -> perda de tempo para as threads que terminam mais rápido que outras, perda de desempenho
+    
+    claúsula schedule - usa chunk_size
+        static - o espaço de iteração é dividido em espaços (iguais/com chunk_size iteracoes) (escalonamento em bloco)
+            melhor para laços balanceados ou com desbalanceamento leve
+        dynamic - fifo, chunk_size 
+
+        guided - similar ao dinamic, mas começa em tamanhos grandes e vão diminuindo exponencialmente
+
+        auto - deixa o openmp escolher qual método de escalonamento será utilizado
+            pode ser util se o laço é executado diversas vezes ao longo da execução
+        runtime - delega a escolha para o escalonamento em tempo de execução set_schedule
+            usado para experimentação adequada
+
+    A escolha do escalonamento ideal depende de duas coisas: 
+        Balanceamento de Carga (Load Balancing): Garantir que todas as threads trabalhem a mesma quantidade de tempo e terminem juntas.
+        Custo de Gerenciamento (Overhead): O tempo que o computador gasta organizando e distribuindo as tarefas
